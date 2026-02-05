@@ -337,26 +337,3 @@ footer {
     .contact-wrapper { flex-direction: column; padding: 20px; }
     .contact-info { border-right: none; border-bottom: 1px solid #eee; padding-bottom: 30px; }
 }
-s { 
-        display: none; 
-        flex-direction: column; 
-        position: absolute; 
-        top: 80px; 
-        left: 0; 
-        width: 100%; 
-        background: white; 
-        text-align: center; 
-        padding: 30px 0; 
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-    }
-    
-    .nav-links.active { display: flex; }
-    
-    .nav-links li { margin: 15px 0; margin-left: 0; }
-    
-    .about-grid { grid-template-columns: 1fr; }
-    
-    .hero-content h1 { font-size: 2.5rem; }
-    
-    .contact-wrapper { flex-direction: column; padding: 20px; }
-    .contact-info { border-right: none; border-bottom: 1px solid #eee; padding-bottom: 30px; }
