@@ -1,36 +1,46 @@
 <?php
 // send_mail.php
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // 1. Sanitize input
     $name = strip_tags(trim($_POST["name"]));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $message = trim($_POST["message"]);
 
-    // Validate inputs
+    // 2. Validate input
     if ( empty($name) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Please complete the form correctly.";
+        // Error: Redirect back to index.html
+        echo "<script>alert('Please complete the form correctly.'); window.location.href='index.html';</script>";
         exit;
     }
 
-    // Set the recipient email address (Put your dad's email here)
+    // 3. Email Settings
+    // IMPORTANT: Change this to your actual email address
     $recipient = "info@integocorporates.com";
 
-    // Build the email content
-    $subject = "New Contact from $name";
-    $email_content = "Name: $name\n";
+    // 4. Build Email
+    $subject = "Intego Inquiry from: $name";
+    
+    $email_content = "You have received a new message from the Intego Corporates website.\n\n";
+    $email_content .= "Name: $name\n";
     $email_content .= "Email: $email\n\n";
     $email_content .= "Message:\n$message\n";
 
     $email_headers = "From: $name <$email>";
 
-    // Send the email
+    // 5. Send and Redirect
     if (mail($recipient, $subject, $email_content, $email_headers)) {
-        // Redirect back to home with success message
-        echo "<script>alert('Thank you! Your message has been sent.'); window.location.href='index.php';</script>";
+        // Success: Redirect to index.html
+        echo "<script>alert('Thank you! Your message has been sent successfully.'); window.location.href='index.html';</script>";
     } else {
-        echo "<script>alert('Oops! Something went wrong.'); window.location.href='index.php';</script>";
+        // Failure: Redirect to index.html
+        echo "<script>alert('Oops! Something went wrong. Please try again later.'); window.location.href='index.html';</script>";
     }
+
 } else {
-    // Not a POST request
-    header("Location: index.php");
+    // If user tries to access this file directly, send them home
+    header("Location: index.html");
+    exit;
 }
 ?>
