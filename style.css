@@ -63,7 +63,7 @@ body {
     color: white; 
     padding: 14px 35px; 
     border: none; 
-    border-radius: 2px; /* Sharper corners look more professional */
+    border-radius: 50PX; /* Sharper corners look more professional */
     text-decoration: none; 
     font-weight: 600;
     text-transform: uppercase;
@@ -313,6 +313,21 @@ footer {
 @media(max-width: 768px) {
     .menu-toggle { display: block; }
     
+    
+    
+    .nav-links { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 80px; 
+        left: 0; 
+        width: 100%; 
+        background: white; 
+        text-align: center; 
+        padding: 30px 0; 
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
     .nav-links { 
         display: none; 
         flex-direction: column; 
